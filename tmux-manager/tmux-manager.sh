@@ -36,6 +36,8 @@ sessions_list=(
     "markdown" \
     "isp" \
 	"mars" \
+	"mars3" \
+    "cc" \
     "project" \
     "fun" \
     "chore" \
@@ -335,6 +337,58 @@ tmux_template_for_mars()
 		select-window -t 0 \;
 }
 
+tmux_template_for_cc()
+{
+	tmux new-session -s "$1" -n "mygithub" \; \
+		split-window -h \; \
+		new-window -n "knowledge" \; \
+		split-window -h \; \
+		new-window -n "cc" \; \
+		split-window -h \; \
+		new-window -n "nvim" \; \
+		split-window -h \; \
+		new-window -n "autotest" \; \
+		split-window -h \; \
+		new-window -n "chore" \; \
+		split-window -h \; \
+		select-window -t 0 \; \
+		send-keys -t 0 'cd ~/mygithub;clear' C-m\; \
+		send-keys -t 1 'cd ~/mygithub;clear' C-m\; \
+		select-window -t 1 \; \
+		send-keys -t 0 'cd ~/mygithub/knowledge;clear' C-m\; \
+		send-keys -t 1 'cd ~/mygithub/knowledge;clear' C-m\; \
+		select-window -t 2 \; \
+		send-keys -t 0 'cd ~/.claude;clear' C-m\; \
+		send-keys -t 1 'cd ~/.claude;clear' C-m\; \
+		select-window -t 3 \; \
+		send-keys -t 0 'cd ~/.config/nvim;clear' C-m\; \
+		send-keys -t 1 'cd ~/.config/nvim;clear' C-m\; \
+		select-window -t 4 \; \
+		send-keys -t 0 'cd /mnt/nfs/test;clear' C-m\; \
+		send-keys -t 1 'cd /mnt/nfs/test;clear' C-m\; \
+		select-window -t 5 \; \
+		send-keys -t 0 'cd ~;clear' C-m\; \
+		send-keys -t 1 'cd ~;clear' C-m\; \
+		select-window -t 0 \;
+}
+
+tmux_template_for_mars3()
+{
+	tmux new-session -s "$1" -n "single" \; \
+		split-window -h \; \
+		new-window -n "dual_os" \; \
+		split-window -h \; \
+		new-window -n "chore" \; \
+		split-window -h \; \
+		select-window -t 0 \; \
+		send-keys -t 0 'cd ~/mars3l;clear' C-m\; \
+		send-keys -t 1 'cd ~/mars3l;clear' C-m\; \
+		select-window -t 1 \; \
+		send-keys -t 0 'cd ~/mars3d;clear' C-m\; \
+		send-keys -t 1 'cd ~/mars3d;clear' C-m\; \
+		select-window -t 0 \;
+}
+
 tmux_cpp()
 {
     tmux_template_2panes "c++"
@@ -362,10 +416,22 @@ tmux_isp()
     echo "this is the isp's tmux"
 }
 
+tmux_cc()
+{
+    tmux_template_for_cc "cc"
+    echo "this is the cc's tmux"
+}
+
 tmux_mars()
 {
     tmux_template_for_mars "mars"
     echo "this is the mars's tmux"
+}
+
+tmux_mars3()
+{
+    tmux_template_for_mars3 "mars3"
+    echo "this is the mars3's tmux"
 }
 
 tmux_entertainment()
@@ -912,10 +978,16 @@ action()
         "markdown")
             ;;
 
+        "cc")
+            ;;
+
         "isp")
             ;;
 
         "mars")
+            ;;
+
+        "mars3")
             ;;
 
         "shell")
@@ -1036,6 +1108,21 @@ case "$1" in
         ;;
     #}}}
 
+    "cc")
+    #{{{
+        # set the environment variable
+        echo "export mode=$1" > $mode_control_path
+        if [ "$tmux_action" == "into" ]; then
+            tmux attach -t $1
+        else
+            # create the tmux layout
+            tmux_cc
+            # check the file if exists, if not touch the files
+            create_mode_dir $1
+        fi
+        ;;
+    #}}}
+
     "markdown")
     #{{{
         # set the environment variable
@@ -1075,6 +1162,21 @@ case "$1" in
         else
             # create the tmux layout
             tmux_mars
+            # check the file if exists, if not touch the files
+            create_mode_dir $1
+        fi
+        ;;
+    #}}}
+
+    "mars3")
+    #{{{
+        # set the environment variable
+        echo "export mode=$1" > $mode_control_path
+        if [ "$tmux_action" == "into" ]; then
+            tmux attach -t $1
+        else
+            # create the tmux layout
+            tmux_mars3
             # check the file if exists, if not touch the files
             create_mode_dir $1
         fi
@@ -1525,6 +1627,8 @@ case "$1" in
     #{{{
         clear
         echo -e "${YELLOW}-------------------------------> OPTION <---------------------------------------${NOCOLOR}"
+        echo -e "${GREEN}: cc->:${NOCOLOR} create or into the cc tmux session"
+        echo
         echo -e "${GREEN}: vim->:${NOCOLOR} create or into the vim tmux session"
         echo
         echo -e "${GREEN}: c++->:${NOCOLOR} create or into the c++ tmux session"
@@ -1536,6 +1640,8 @@ case "$1" in
         echo -e "${GREEN}: isp->:${NOCOLOR} create or into the isp tmux session"
         echo
         echo -e "${GREEN}: mars->:${NOCOLOR} create or into the mars tmux session"
+        echo
+        echo -e "${GREEN}: mars3->:${NOCOLOR} create or into the mars3 tmux session"
         echo
         echo -e "${GREEN}: shell->:${NOCOLOR} create or into the shell tmux session"
         echo
