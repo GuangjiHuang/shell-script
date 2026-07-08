@@ -1,0 +1,13 @@
+#!/bin/bash
+# 编译并运行 pretend-to-do-something
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cpp="${SCRIPT_DIR}/pretend-to-do-something.cpp"
+exe="${SCRIPT_DIR}/pretend-to-do-something"
+
+if [ ! -f "${exe}" ] || [ "${cpp}" -nt "${exe}" ]; then
+    g++ "${cpp}" -o "${exe}" && echo "编译完成"
+fi
+
+if [ -f "${exe}" ]; then
+    exec "${exe}" "$@"
+fi

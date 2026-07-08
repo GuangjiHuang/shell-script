@@ -1,0 +1,17 @@
+# 在 ~/.bashrc 中加入以下函数，让 vr 的 go 类命令自动 cd:
+#
+# vr() {
+#     local out
+#     out="$(command vr "$@")"
+#     if [[ "$out" == cd\ * ]]; then
+#         eval "$out"
+#     else
+#         echo "$out"
+#     fi
+# }
+#
+# 加入后，直接运行:
+#   vr -v go       → 真正 cd 到中间站路径
+#   vr -v a go     → 真正 cd 到寄存器 a 路径
+#   vr -c a        → 正常复制
+#   其他 vr 命令   → 正常输出
