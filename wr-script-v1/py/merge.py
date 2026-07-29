@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-merge.py — 将 learn/question/review/idea 合并到 compress/xxx-a.txt
+merge.py — 将 learn/question/review/idea 合并到 compress/xxx-a.md
 修复: #5 裸 except → 具体异常处理 + 日志
      #15 使用 datetime 替代 time.time() 做日期推算
 """
@@ -41,8 +41,8 @@ def get_merge_dates():
 
 
 def merge_file(date_dir, file_type):
-    """合并单个文件到 compress/xxx-a.txt"""
-    fl_path = os.path.join(date_dir, f"{file_type}.txt")
+    """合并单个文件到 compress/xxx-a.md"""
+    fl_path = os.path.join(date_dir, f"{file_type}.md")
 
     if not os.path.exists(fl_path):
         print(f"  {file_type}: 跳过(文件不存在)")
@@ -60,7 +60,7 @@ def merge_file(date_dir, file_type):
     match = DATE_PATTERN.search(content)
     date_str = match.group() if match else "unknown"
 
-    merge_path = os.path.join(MERGE_DIR, f"{file_type}-a.txt")
+    merge_path = os.path.join(MERGE_DIR, f"{file_type}-a.md")
 
     # 读取已有合并文件
     existing_lines = []

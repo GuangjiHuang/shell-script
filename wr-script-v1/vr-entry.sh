@@ -48,7 +48,7 @@ TODAY_PATH="${RECORD_BASE}/${DATE_DIR}"
 export p_today="${TODAY_PATH}/"
 
 # ─── 初始化每日目录 (若不存在) ───
-if [ ! -d "${TODAY_PATH}" ] || [ ! -f "${TODAY_PATH}/plan.txt" ]; then
+if [ ! -d "${TODAY_PATH}" ] || [ ! -f "${TODAY_PATH}/plan.md" ]; then
     mkdir -p "${TODAY_PATH}"
     echo "created directory: ${TODAY_PATH}"
 
@@ -59,7 +59,7 @@ if [ ! -d "${TODAY_PATH}" ] || [ ! -f "${TODAY_PATH}/plan.txt" ]; then
     for f in plan learn code question review idea temp diary \
              code_task arrangement record; do
         printf '%s\n%s  %s\n%s\n\n' "$sep" "$ts" "$(echo "$f" | tr 'a-z' 'A-Z')" "$sep" \
-            > "${TODAY_PATH}/${f}.txt"
+            > "${TODAY_PATH}/${f}.md"
     done
 
     # 打字/英语练习 (保持旧拼写 pratice 以兼容 wr-script 旧数据)
@@ -71,11 +71,11 @@ if [ ! -d "${TODAY_PATH}" ] || [ ! -f "${TODAY_PATH}/plan.txt" ]; then
     # todolist 从模板复制
     sep2="--------------------------------------"
     printf '%s\n%s  TODOLIST\n%s\n' "$sep2" "$ts" "$sep2" \
-        > "${TODAY_PATH}/todolist.txt"
+        > "${TODAY_PATH}/todolist.md"
     if [ -f "${INSTALL_DIR}/todolist/todolist.template" ]; then
-        cat "${INSTALL_DIR}/todolist/todolist.template" >> "${TODAY_PATH}/todolist.txt"
+        cat "${INSTALL_DIR}/todolist/todolist.template" >> "${TODAY_PATH}/todolist.md"
     fi
-    echo "${TODAY_PATH}/todolist.txt" > "${INSTALL_DIR}/todolist/date-path.txt"
+    echo "${TODAY_PATH}/todolist.md" > "${INSTALL_DIR}/todolist/date-path.txt"
 
     # 打字练习模板
     if [ -f "${INSTALL_DIR}/type.template" ]; then
@@ -95,61 +95,61 @@ case "$1" in
         if [ "$2" = "-w" ] || [ "$2" = "-m" ] || [ "$2" = "-y" ]; then
             python3 "${INSTALL_DIR}/py/plan-w-m-y.py" "$2"
         else
-            vim "${TODAY_PATH}/plan.txt"
+            vim "${TODAY_PATH}/plan.md"
         fi
         ;;
 
     # ── 日常记录 ──
-    record)     vim "${TODAY_PATH}/record.txt" ;;
-    arrangement)vim "${TODAY_PATH}/arrangement.txt" ;;
-    temp)       vim "${TODAY_PATH}/temp.txt" ;;
-    diary)      vim "${TODAY_PATH}/diary.txt" ;;
-    code-task)  vim "${TODAY_PATH}/code_task.txt" ;;
+    record)     vim "${TODAY_PATH}/record.md" ;;
+    arrangement)vim "${TODAY_PATH}/arrangement.md" ;;
+    temp)       vim "${TODAY_PATH}/temp.md" ;;
+    diary)      vim "${TODAY_PATH}/diary.md" ;;
+    code-task)  vim "${TODAY_PATH}/code_task.md" ;;
 
     learn)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/learn-a.txt"
+            vim "${RECORD_BASE}/compress/learn-a.md"
         else
-            vim "${TODAY_PATH}/learn.txt"
+            vim "${TODAY_PATH}/learn.md"
         fi
         ;;
 
     code)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/code-a.txt"
+            vim "${RECORD_BASE}/compress/code-a.md"
         else
-            vim "${TODAY_PATH}/code.txt"
+            vim "${TODAY_PATH}/code.md"
         fi
         ;;
 
     question)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/question-a.txt"
+            vim "${RECORD_BASE}/compress/question-a.md"
         else
-            vim "${TODAY_PATH}/question.txt"
+            vim "${TODAY_PATH}/question.md"
         fi
         ;;
 
     review)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/review-a.txt"
+            vim "${RECORD_BASE}/compress/review-a.md"
         else
-            vim "${TODAY_PATH}/review.txt"
+            vim "${TODAY_PATH}/review.md"
         fi
         ;;
 
     idea)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/idea-a.txt"
+            vim "${RECORD_BASE}/compress/idea-a.md"
         else
-            vim "${TODAY_PATH}/idea.txt"
+            vim "${TODAY_PATH}/idea.md"
         fi
         ;;
 
     # ── Todo & Score ──
     todo)
         python3 "${INSTALL_DIR}/py/todo_score.py"
-        vim "${TODAY_PATH}/todolist.txt"
+        vim "${TODAY_PATH}/todolist.md"
         ;;
 
     score)

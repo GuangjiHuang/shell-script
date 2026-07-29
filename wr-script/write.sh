@@ -238,33 +238,33 @@ elif [ "$2" == "-z" ]; then
     dir_name="compress"
 fi
 today_path=~/mygithub/everyday-record/${dir_name}
-if [ ! -d "${today_path}" -o ! -f "${today_path}/plan.txt" ]; then
+if [ ! -d "${today_path}" -o ! -f "${today_path}/plan.md" ]; then
     mkdir -p ${today_path}
     echo "creat the ${today_path} successfully!"
     separate_sign="=================================="
-    touch ${today_path}/plan.txt && echo -e  "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  PLAN\n${separate_sign}\n" > ${today_path}/plan.txt
-    touch ${today_path}/learn.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  LEARN\n${separate_sign}\n" > ${today_path}/learn.txt
-    touch ${today_path}/code.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  CODE\n${separate_sign}\n" > ${today_path}/code.txt
-    touch ${today_path}/question.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  QUESTION\n${separate_sign}\n" > ${today_path}/question.txt
-    touch ${today_path}/review.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  REVIEW\n${separate_sign}\n" > ${today_path}/review.txt
-    touch ${today_path}/idea.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  IDEA\n${separate_sign}\n" > ${today_path}/idea.txt
-    touch ${today_path}/temp.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  TEMP\n${separate_sign}\n" > ${today_path}/temp.txt
-    touch ${today_path}/diary.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  DIARY\n${separate_sign}\n" > ${today_path}/diary.txt
-    touch ${today_path}/code_task.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  CODE-TASK\n${separate_sign}\n" > ${today_path}/code_task.txt
-    touch ${today_path}/arragement.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  ARRAGEMENT\n${separate_sign}\n" > ${today_path}/arragement.txt
-    touch ${today_path}/record.txt && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  RECORD\n${separate_sign}\n" > ${today_path}/record.txt
+    touch ${today_path}/plan.md && echo -e  "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  PLAN\n${separate_sign}\n" > ${today_path}/plan.md
+    touch ${today_path}/learn.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  LEARN\n${separate_sign}\n" > ${today_path}/learn.md
+    touch ${today_path}/code.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  CODE\n${separate_sign}\n" > ${today_path}/code.md
+    touch ${today_path}/question.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  QUESTION\n${separate_sign}\n" > ${today_path}/question.md
+    touch ${today_path}/review.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  REVIEW\n${separate_sign}\n" > ${today_path}/review.md
+    touch ${today_path}/idea.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  IDEA\n${separate_sign}\n" > ${today_path}/idea.md
+    touch ${today_path}/temp.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  TEMP\n${separate_sign}\n" > ${today_path}/temp.md
+    touch ${today_path}/diary.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  DIARY\n${separate_sign}\n" > ${today_path}/diary.md
+    touch ${today_path}/code_task.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  CODE-TASK\n${separate_sign}\n" > ${today_path}/code_task.md
+    touch ${today_path}/arragement.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  ARRAGEMENT\n${separate_sign}\n" > ${today_path}/arragement.md
+    touch ${today_path}/record.md && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  RECORD\n${separate_sign}\n" > ${today_path}/record.md
     touch ${today_path}/type.pratice && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  PRATICE\n${separate_sign}\n" > ${today_path}/type.pratice
     touch ${today_path}/English.pratice && echo -e "${separate_sign}\n$(date "+%Y-%m-%d %a %X")  PRATICE\n${separate_sign}\n" > ${today_path}/English.pratice
-    # add the todolist.txt (copy the template to it );
+    # add the todolist.md (copy the template to it );
     separate_sign_2="--------------------------------------"
-    touch ${today_path}/todolist.txt && echo -e "${separate_sign_2}\n$(date "+%Y-%m-%d %a %X") TODOLIST\n${separate_sign_2}" > ${today_path}/todolist.txt
-    cat ~/opt/myscript/wr-script/todolist/todolist.template >> ${today_path}/todolist.txt
-    echo "${today_path}/todolist.txt" > ~/opt/myscript/wr-script/todolist/date-path.txt
+    touch ${today_path}/todolist.md && echo -e "${separate_sign_2}\n$(date "+%Y-%m-%d %a %X") TODOLIST\n${separate_sign_2}" > ${today_path}/todolist.md
+    cat ~/opt/myscript/wr-script/todolist/todolist.template >> ${today_path}/todolist.md
+    echo "${today_path}/todolist.md" > ~/opt/myscript/wr-script/todolist/date-path.md
     # copy the type.template to the type.pratice
     cat ~/opt/myscript/wr-script/type.template >> ${today_path}/type.pratice
     echo $separate_sign_2 >> ${today_path}/type.pratice
 
-    # if today is the  first day of the week, month, and year, and then creat the plan-w.txt, plan-m.txt and the plan-y.txt
+    # if today is the  first day of the week, month, and year, and then creat the plan-w.md, plan-m.md and the plan-y.md
     python "$HOME/opt/myscript/wr-script/py/plan-w-m-y.py"
 fi
 
@@ -280,71 +280,71 @@ case "$1" in
         elif [ "$2" == "-y" ]; then
             python "$HOME/opt/myscript/wr-script/py/plan-w-m-y.py" "-y"
         else
-            vim ${today_path}/plan.txt
+            vim ${today_path}/plan.md
         fi
         ;;
 
     "record")
         #record_path=/cygdrive/c/Users/${USER}/Desktop/study-app/data/everyday/$(date "+%Y")/$(date "+%Y-%m")/$(date "+%m-%d")/record.txt
         #vim ${record_path}
-		vim ${today_path}/record.txt
+		vim ${today_path}/record.md
         ;;
 
     "arragement")
         #arragement_path=/cygdrive/c/Users/${USER}/Desktop/study-app/data/everyday/$(date "+%Y")/$(date "+%Y-%m")/$(date "+%m-%d")/plan.txt
         #vim ${arragement_path}
-		vim ${today_path}/arragement.txt
+		vim ${today_path}/arragement.md
         ;;
 
     "learn")
         if [ "$2" == "-z" ]; then
-            vim ${today_path}/learn-a.txt
+            vim ${today_path}/learn-a.md
         else
-            vim ${today_path}/learn.txt
+            vim ${today_path}/learn.md
         fi
         ;;
 
     "code")
         if [ "$2" == "-z" ]; then
-            vim ${today_path}/code-a.txt
+            vim ${today_path}/code-a.md
         else
-            vim ${today_path}/code.txt
+            vim ${today_path}/code.md
         fi
         ;;
 
     "question")
         if [ "$2" == "-z" ]; then
-            vim ${today_path}/question-a.txt
+            vim ${today_path}/question-a.md
         else
-            vim ${today_path}/question.txt
+            vim ${today_path}/question.md
         fi
         ;;
 
     "temp")
-        vim ${today_path}/temp.txt
+        vim ${today_path}/temp.md
         ;;
 
     "diary")
-        vim ${today_path}/diary.txt
+        vim ${today_path}/diary.md
         ;;
 
     "code_task")
-        vim ${today_path}/code_task.txt
+        vim ${today_path}/code_task.md
         ;;
 
     "review")
         if [ "$2" == "-z" ]; then
-            vim ${today_path}/review-a.txt
+            vim ${today_path}/review-a.md
         else
-            vim ${today_path}/review.txt
+            vim ${today_path}/review.md
         fi
         ;;
 
     "idea")
         if [ "$2" == "-z" ]; then
-            vim ${today_path}/idea-a.txt
+            vim ${today_path}/idea-a.md
         else
-            vim ${today_path}/idea.txt
+            vim ${today_path}/idea.md
         fi
         ;;
 
@@ -399,12 +399,12 @@ case "$1" in
         ;;
 
     "merge")
-        #cat ${today_path}/question.txt >> ~/mygithub/everyday-record/compress/question-a.txt
-        #cat ${today_path}/learn.txt >> ~/mygithub/everyday-record/compress/learn-a.txt
-        #cat ${today_path}/code.txt >> ~/mygithub/everyday-record/compress/code-a.txt
+        #cat ${today_path}/question.md >> ~/mygithub/everyday-record/compress/question-a.md
+        #cat ${today_path}/learn.md >> ~/mygithub/everyday-record/compress/learn-a.md
+        #cat ${today_path}/code.md >> ~/mygithub/everyday-record/compress/code-a.md
         # use the python script
         python ~/opt/myscript/wr-script/py/merge.py
-        #echo "Good job! Has been merging xxx.txt to xxx-a.txt! Successfully!"
+        #echo "Good job! Has been merging xxx.md to xxx-a.md! Successfully!"
         ;;
 
     "all")
@@ -432,14 +432,14 @@ case "$1" in
     "todo")
         # first execute the rewrite program
         python ~/opt/myscript/wr-script/py/todo_score.py
-        vim ${today_path}/todolist.txt
+        vim ${today_path}/todolist.md
         ;;
 
     "score")
         clear
         # first execute the rewrite program
         python ~/opt/myscript/wr-script/py/count_score.py $2
-        #vim ${today_path}/todolist.txt
+        #vim ${today_path}/todolist.md
         ;;
 
     "todo-cfg")
@@ -662,15 +662,15 @@ case "$1" in
         echo
         echo -e "${GREEN}: go-linux_basic_cfg->${NOCOLOR}: cd to the linux_basic_cfg"
         echo
-        echo -e "${GREEN}: goal xxx.txt${NOCOLOR}: about the goal, you can use the command < wr goal help > for more information"
+        echo -e "${GREEN}: goal xxx.md${NOCOLOR}: about the goal, you can use the command < wr goal help > for more information"
         echo
         echo -e "${GREEN}: gpu computer_name${NOCOLOR}: show the computer's gpu's usage"
         echo
         echo -e "${GREEN}: help->${NOCOLOR}: get the help"
         echo
-        echo -e "${GREEN}: learn->${NOCOLOR}: go to the learn.txt"
+        echo -e "${GREEN}: learn->${NOCOLOR}: go to the learn.md"
         echo
-        echo -e "${GREEN}: code->${NOCOLOR}: go to the code.txt"
+        echo -e "${GREEN}: code->${NOCOLOR}: go to the code.md"
         echo
         echo -e "${GREEN}: merge->${NOCOLOR}: merge the today's question, plan to the compress's directory"
         echo
@@ -686,7 +686,7 @@ case "$1" in
         echo
         echo -e "${GREEN}: preview_md_exe->${NOCOLOR}:(the window mode)use the when-changed command, when you write the markdwon in the vim, save it, show in the typora immediately"
         echo
-        echo -e "${GREEN}: question->${NOCOLOR}: go the question.txt"
+        echo -e "${GREEN}: question->${NOCOLOR}: go the question.md"
         echo
         echo -e "${GREEN}: rain mode->${NOCOLOR}: emulate the rain in the screen"
         echo
@@ -696,19 +696,19 @@ case "$1" in
         echo
         echo -e "${GREEN}: score->${NOCOLOR}: get the score of the today, including the arragement, todolist, and so on!"
         echo
-        echo -e "${GREEN}: temp->${NOCOLOR}: go the temp.txt"
+        echo -e "${GREEN}: temp->${NOCOLOR}: go the temp.md"
         echo
-        echo -e "${GREEN}: diary->${NOCOLOR}: go the diary.txt"
+        echo -e "${GREEN}: diary->${NOCOLOR}: go the diary.md"
         echo
-        echo -e "${GREEN}: code_task->${NOCOLOR}: go the code_task.txt"
+        echo -e "${GREEN}: code_task->${NOCOLOR}: go the code_task.md"
         echo
-        echo -e "${GREEN}: record->${NOCOLOR}: go the record.txt"
+        echo -e "${GREEN}: record->${NOCOLOR}: go the record.md"
         echo
-        echo -e "${GREEN}: arragement->${NOCOLOR}: go the arragement.txt"
+        echo -e "${GREEN}: arragement->${NOCOLOR}: go the arragement.md"
         echo
-        echo -e "${GREEN}: review [-z]->${NOCOLOR}: go the review.txt, if with -z, go to the merge file."
+        echo -e "${GREEN}: review [-z]->${NOCOLOR}: go the review.md, if with -z, go to the merge file."
         echo
-        echo -e "${GREEN}: todo->${NOCOLOR}: edit the todolist.txt"
+        echo -e "${GREEN}: todo->${NOCOLOR}: edit the todolist.md"
         echo
         echo -e "${GREEN}: todo-cfg->${NOCOLOR}: modify the todo configuration"
         echo

@@ -38,7 +38,7 @@ def merge_by_date(date_dir):
     file_ty_ls = ["learn", "question", "review", "idea"]
     for fl in file_ty_ls:
         # read the file
-        fl_path = os.path.join(date_dir, fl+".txt")
+        fl_path = os.path.join(date_dir, fl+".md")
         print(fl_path)
         # check the path first
         if not os.path.exists(fl_path):
@@ -59,7 +59,7 @@ def merge_by_date(date_dir):
             if match:
                 date = match.group()
         # read the merge_file
-        merge_path = os.path.join(merge_dir, fl+"-a.txt")
+        merge_path = os.path.join(merge_dir, fl+"-a.md")
         lines = list()
         if os.path.exists(merge_path):
             with open(merge_path, "r", encoding="utf-8") as f:

@@ -46,16 +46,16 @@ if __name__ == "__main__":
 
     # ─── 路径 (修复 #3: 不再硬编码 /cygdrive/c/...) ───
     question_dir = os.path.join(base, date_str)
-    todolist_path = os.path.join(base, date_str, "todolist.txt")
+    todolist_path = os.path.join(base, date_str, "todolist.md")
 
     # arrangement 和 record 从两个可能位置查找
     possible_arragement = [
-        os.path.join(base, date_str, "plan.txt"),             # 新位置
-        os.path.join(base, "study-app", date_str, "plan.txt"),  # 旧位置
+        os.path.join(base, date_str, "plan.md"),             # 新位置
+        os.path.join(base, "study-app", date_str, "plan.md"),  # 旧位置
     ]
     possible_record = [
-        os.path.join(base, date_str, "record.txt"),
-        os.path.join(base, "study-app", date_str, "record.txt"),
+        os.path.join(base, date_str, "record.md"),
+        os.path.join(base, "study-app", date_str, "record.md"),
     ]
 
     arragement_path = None
@@ -85,8 +85,8 @@ if __name__ == "__main__":
         + q_l_score * weights[3]
     )
 
-    # ─── 写回 score.txt ───
-    score_path = os.path.join(base, date_str, "score.txt")
+    # ─── 写回 score.md ───
+    score_path = os.path.join(base, date_str, "score.md")
     os.makedirs(os.path.dirname(score_path), exist_ok=True)
     with open(score_path, "w", encoding="utf-8") as f:
         f.write(str(total))

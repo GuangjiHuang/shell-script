@@ -16,7 +16,7 @@ from vr_score_lib import get_todolist_score
 if __name__ == "__main__":
     today = time.strftime("%Y-%m/%m-%d")
     base = os.path.join(os.path.expanduser("~"), "mygithub/everyday-record")
-    todolist_path = os.path.join(base, today, "todolist.txt")
+    todolist_path = os.path.join(base, today, "todolist.md")
 
     score = get_todolist_score(todolist_path)
     print(f"→ todolist: {score} points")

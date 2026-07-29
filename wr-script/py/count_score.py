@@ -177,7 +177,7 @@ def get_question_and_learn_score(question_and_learn_dir, full_score_number=10):
     # match pattern
     pattern = "\d{1,2} *\."
     for file in fl_ty:
-        file_path = os.path.join(question_and_learn_dir, file + ".txt")
+        file_path = os.path.join(question_and_learn_dir, file + ".md")
         if not os.path.exists(file_path):
             continue
         with open(file_path, "r", encoding="utf-8") as f:
@@ -230,10 +230,10 @@ if __name__ == "__main__":
     everyday_record_dir = f"/home/{user_name}/mygithub/everyday-record/"
     question_and_learn_dir = os.path.join(everyday_record_dir, date_str)
     study_app_dir = f"/cygdrive/c/Users/{user_name}/Desktop/study-app/data/everyday/"
-    arragement_path = os.path.join(study_app_dir, time.strftime("%Y"), date_str, "plan.txt")
-    record_path = os.path.join(study_app_dir, time.strftime("%Y"), date_str, "record.txt")
-    todolist_path = os.path.join(everyday_record_dir, date_str, "todolist.txt")
-    score_path = os.path.join(everyday_record_dir, date_str, "score.txt")
+    arragement_path = os.path.join(study_app_dir, time.strftime("%Y"), date_str, "plan.md")
+    record_path = os.path.join(study_app_dir, time.strftime("%Y"), date_str, "record.md")
+    todolist_path = os.path.join(everyday_record_dir, date_str, "todolist.md")
+    score_path = os.path.join(everyday_record_dir, date_str, "score.md")
     # the question and learn
     q_l_score = get_question_and_learn_score(question_and_learn_dir)
     # the arragement score

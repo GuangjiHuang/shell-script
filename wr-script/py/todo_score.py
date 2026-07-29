@@ -54,6 +54,6 @@ if __name__ == "__main__":
     today_date = time.strftime("%Y-%m/%m-%d")
     user_name = os.getenv("USER", "hgj")
     everyday_record_dir = f"/home/{user_name}/mygithub/everyday-record/"
-    todolist_path = os.path.join(everyday_record_dir, today_date, "todolist.txt")
+    todolist_path = os.path.join(everyday_record_dir, today_date, "todolist.md")
     # the todolist
     todolist_score = get_todolist_score(todolist_path)

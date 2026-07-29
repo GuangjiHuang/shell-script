@@ -8,11 +8,11 @@ tm_s = time.localtime()
 year, month, y_day, m_day, w_day = tm_s.tm_year, tm_s.tm_mon, tm_s.tm_yday, tm_s.tm_mday, tm_s.tm_wday
 
 first_week_day = m_day - w_day
-plan_year_path = f"{year}/{year}-01/01-01/plan-y.txt"
+plan_year_path = f"{year}/{year}-01/01-01/plan-y.md"
 plan_year_path = os.path.join(up_dir, plan_year_path)
-plan_month_path = f"{year}/{year}-{month:02}/{month:02}-01/plan-m.txt"
+plan_month_path = f"{year}/{year}-{month:02}/{month:02}-01/plan-m.md"
 plan_month_path = os.path.join(up_dir, plan_month_path)
-plan_week_path = f"{year}/{year}-{month:02}/{month:02}-{first_week_day:02}/plan-w.txt"
+plan_week_path = f"{year}/{year}-{month:02}/{month:02}-{first_week_day:02}/plan-w.md"
 plan_week_path = os.path.join(up_dir, plan_week_path)
 #print(plan_year_path)
 #print(plan_month_path)

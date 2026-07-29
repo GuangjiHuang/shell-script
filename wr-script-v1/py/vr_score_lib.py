@@ -92,7 +92,7 @@ def get_todolist_score(todolist_path):
 
 
 def get_record_score(record_path, full_record_all_time=45 * 9):
-    """解析 record.txt，计算有效学习时间占比分数"""
+    """解析 record.md，计算有效学习时间占比分数"""
     if not os.path.exists(record_path):
         return 0
 
@@ -189,13 +189,13 @@ def get_arragement_score(arragement_path, full_score_all_time=45 * 9):
 
 
 def get_question_and_learn_score(base_dir, full_score_number=10):
-    """统计 question.txt 和 learn.txt 中的编号条目数"""
+    """统计 question.md 和 learn.md 中的编号条目数"""
     fl_types = ["question", "learn"]
     pattern = re.compile(r"\d{1,2} *\.")
     total = 0
 
     for ft in fl_types:
-        fl_path = os.path.join(base_dir, ft + ".txt")
+        fl_path = os.path.join(base_dir, ft + ".md")
         if not os.path.exists(fl_path):
             continue
         with open(fl_path, "r", encoding="utf-8") as f:

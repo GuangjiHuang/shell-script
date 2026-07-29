@@ -27,9 +27,9 @@ if monday_day < 1:
     monday_day = last_day + monday_day
 
 # 构建路径
-plan_year_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-01", "01-01", "plan-y.txt")
-plan_month_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-{month:02}", f"{month:02}-01", "plan-m.txt")
-plan_week_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-{month:02}", f"{month:02}-{monday_day:02}", "plan-w.txt")
+plan_year_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-01", "01-01", "plan-y.md")
+plan_month_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-{month:02}", f"{month:02}-01", "plan-m.md")
+plan_week_path = os.path.join(up_dir, f"{year:04}", f"{year:04}-{month:02}", f"{month:02}-{monday_day:02}", "plan-w.md")
 
 # 检查是否需要创建（修复 #15: 用 calendar.monthrange 计算月末）
 for plan_path, is_week in [(plan_year_path, False), (plan_month_path, False), (plan_week_path, True)]:
