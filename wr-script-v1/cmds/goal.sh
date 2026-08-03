@@ -59,7 +59,7 @@ cmd_goal() {
         *)
             if [ -d "${goal_dir}${arg1}" ]; then
                 cd "${goal_dir}${arg1}" || return 1
-                vim "${goal_dir}${arg1}"
+                nvim "${goal_dir}${arg1}"
             else
                 echo -e "\033[0;31m目标不存在: ${arg1}\033[0m"
                 echo "提示: 使用 \033[0;32mvr goal create <名称>\033[0m 创建"

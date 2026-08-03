@@ -44,7 +44,7 @@ DATE_DIR="$(build_date_dir "$@")"
 RECORD_BASE="${HOME}/mygithub/everyday-record"
 TODAY_PATH="${RECORD_BASE}/${DATE_DIR}"
 
-# 导出 p_today 供 vim 内使用
+# 导出 p_today 供 nvim 内使用
 export p_today="${TODAY_PATH}/"
 
 # ─── 初始化每日目录 (若不存在) ───
@@ -95,61 +95,61 @@ case "$1" in
         if [ "$2" = "-w" ] || [ "$2" = "-m" ] || [ "$2" = "-y" ]; then
             python3 "${INSTALL_DIR}/py/plan-w-m-y.py" "$2"
         else
-            vim "${TODAY_PATH}/plan.md"
+            nvim "${TODAY_PATH}/plan.md"
         fi
         ;;
 
     # ── 日常记录 ──
-    record)     vim "${TODAY_PATH}/record.md" ;;
-    arrangement)vim "${TODAY_PATH}/arrangement.md" ;;
-    temp)       vim "${TODAY_PATH}/temp.md" ;;
-    diary)      vim "${TODAY_PATH}/diary.md" ;;
-    code-task)  vim "${TODAY_PATH}/code_task.md" ;;
+    record)     nvim "${TODAY_PATH}/record.md" ;;
+    arrangement)nvim "${TODAY_PATH}/arrangement.md" ;;
+    temp)       nvim "${TODAY_PATH}/temp.md" ;;
+    diary)      nvim "${TODAY_PATH}/diary.md" ;;
+    code-task)  nvim "${TODAY_PATH}/code_task.md" ;;
 
     learn)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/learn-a.md"
+            nvim "${RECORD_BASE}/compress/learn-a.md"
         else
-            vim "${TODAY_PATH}/learn.md"
+            nvim "${TODAY_PATH}/learn.md"
         fi
         ;;
 
     code)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/code-a.md"
+            nvim "${RECORD_BASE}/compress/code-a.md"
         else
-            vim "${TODAY_PATH}/code.md"
+            nvim "${TODAY_PATH}/code.md"
         fi
         ;;
 
     question)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/question-a.md"
+            nvim "${RECORD_BASE}/compress/question-a.md"
         else
-            vim "${TODAY_PATH}/question.md"
+            nvim "${TODAY_PATH}/question.md"
         fi
         ;;
 
     review)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/review-a.md"
+            nvim "${RECORD_BASE}/compress/review-a.md"
         else
-            vim "${TODAY_PATH}/review.md"
+            nvim "${TODAY_PATH}/review.md"
         fi
         ;;
 
     idea)
         if [ "$2" = "-z" ]; then
-            vim "${RECORD_BASE}/compress/idea-a.md"
+            nvim "${RECORD_BASE}/compress/idea-a.md"
         else
-            vim "${TODAY_PATH}/idea.md"
+            nvim "${TODAY_PATH}/idea.md"
         fi
         ;;
 
     # ── Todo & Score ──
     todo)
         python3 "${INSTALL_DIR}/py/todo_score.py"
-        vim "${TODAY_PATH}/todolist.md"
+        nvim "${TODAY_PATH}/todolist.md"
         ;;
 
     score)
@@ -159,7 +159,7 @@ case "$1" in
 
     todo-cfg)
         cd "${INSTALL_DIR}/todolist/" || return 1 2>/dev/null || true
-        vim .
+        nvim .
         ;;
 
     # ── 合并 ──
@@ -168,7 +168,7 @@ case "$1" in
         ;;
 
     all)
-        vim "${RECORD_BASE}/compress/"
+        nvim "${RECORD_BASE}/compress/"
         ;;
 
     # ── 日期指针 ──
@@ -208,7 +208,7 @@ case "$1" in
         echo "-> ${TODAY_PATH}"
         ;;
 
-    go-wr)
+    go-vr)
         cd "${INSTALL_DIR}" || return 1 2>/dev/null || true
         echo "-> ${INSTALL_DIR}"
         ;;
@@ -257,10 +257,10 @@ case "$1" in
         }
         case "$2" in
             "" | "-p")
-                vim "$(_vr_type_file)"
+                nvim "$(_vr_type_file)"
                 ;;
             m)
-                vim "${INSTALL_DIR}/type.template"
+                nvim "${INSTALL_DIR}/type.template"
                 ;;
             c)
                 cp "${INSTALL_DIR}/type.template" \
@@ -276,7 +276,7 @@ case "$1" in
                 cat "${INSTALL_DIR}/type.template" >> "${_vr_tfile}"
                 echo "$sep2" >> "${_vr_tfile}"
                 echo ":-> Has been renewed ${_vr_tfile}"
-                [ "$3" = "o" ] && vim "${_vr_tfile}"
+                [ "$3" = "o" ] && nvim "${_vr_tfile}"
                 ;;
             *)
                 echo -e "${RED}Error: unknown sub-command 'vr type $2'${NOCOLOR}" >&2
@@ -288,9 +288,9 @@ case "$1" in
     # ── 英语练习 ──
     English)
         if [ -f "${TODAY_PATH}/English.pratice" ]; then
-            vim "${TODAY_PATH}/English.pratice"
+            nvim "${TODAY_PATH}/English.pratice"
         else
-            vim "${TODAY_PATH}/English.practice"
+            nvim "${TODAY_PATH}/English.practice"
         fi
         ;;
 
@@ -353,7 +353,7 @@ case "$1" in
         ;;
 
     vr)
-        vim "${INSTALL_DIR}/vr-entry.sh"
+        nvim "${INSTALL_DIR}/vr-entry.sh"
         ;;
 
     reinstall)
@@ -363,7 +363,7 @@ case "$1" in
 
     # ── 快捷键 ──
     -)
-        vim "${HOME}/mygithub/goal/paper/determine_title_report.ddl"
+        nvim "${HOME}/mygithub/goal/paper/determine_title_report.ddl"
         ;;
 
     # ── 帮助 (原问题 #19: 重组格式) ──
@@ -392,7 +392,7 @@ case "$1" in
         echo
         echo -e "  ${GREEN}[导航]${NOCOLOR}"
         echo "    go-e             跳到今日记录目录"
-        echo "    go-wr            跳到脚本目录"
+        echo "    go-vr            跳到脚本目录"
         echo "    go-goal          跳到目标目录"
         echo "    go-config        跳到配置目录"
         echo "    pointer Y-M-D    设置日期指针"

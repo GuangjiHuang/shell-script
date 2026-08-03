@@ -21,8 +21,8 @@ if [ ! -f "${source_dir}/vr-entry.sh" ]; then
     exit 1
 fi
 
-# 清理旧版本
-if [ -d "${target_dir}" ]; then
+# 清理旧版本 (跳过源目录 == 目标目录的情况)
+if [ -d "${target_dir}" ] && [ "$(realpath "${source_dir}")" != "$(realpath "${target_dir}")" ]; then
     rm -rf "${target_dir}"
     echo "已清理旧版本: ${target_dir}"
 fi

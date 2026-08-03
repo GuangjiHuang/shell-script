@@ -72,7 +72,7 @@ arg_map = {"-w": plan_week_path, "-m": plan_month_path, "-y": plan_year_path}
 target = arg_map.get(arg)
 if target:
     print(target)
-    os.system(f'vim "{target}"')
+    os.system(f'nvim "{target}"')
 else:
     print(f"未知参数: {arg}", file=sys.stderr)
     sys.exit(1)
